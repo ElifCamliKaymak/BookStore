@@ -1,4 +1,5 @@
 using AspNetCoreRateLimit;
+using BookStore.Presentation.ActionFilter;
 using BookStore.Services.Contracts;
 using BookStore.WebAPI.Extensions;
 using Microsoft.AspNetCore.Mvc;
@@ -22,6 +23,9 @@ builder.Services.AddControllers(config =>
     .AddXmlDataContractSerializerFormatters()
     .AddApplicationPart(typeof(BookStore.Presentation.AssemblyRefence).Assembly)
     .AddNewtonsoftJson();
+
+
+builder.Services.ConfigureActionFilters();
 
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {

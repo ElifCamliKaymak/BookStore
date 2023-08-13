@@ -1,6 +1,7 @@
 ﻿using BookStore.Entities.DataTransferObjects;
 using BookStore.Entities.Exceptions;
 using BookStore.Entities.Models;
+using BookStore.Presentation.ActionFilter;
 using BookStore.Services.Contracts;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Presentation.Controllers
 {
+    [ServiceFilter(typeof(LogFilterAttribute))]
     [ApiController]
     [Route("api/book")]
     public class BookController : ControllerBase
@@ -44,16 +46,10 @@ namespace BookStore.Presentation.Controllers
         }
 
 
-
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost]
         public async Task<IActionResult> CreateOneBookAsync([FromBody] BookDtoForInsertion bookDto)
         {
-            if (bookDto is null) 
-                return BadRequest(); // StatusCode 400
-
-            if(!ModelState.IsValid)
-                return UnprocessableEntity(ModelState);   // StatusCode 422
-
             var book = await _manager.BookService.CreateOneBookAsync(bookDto);
 
             return StatusCode(201, book);
@@ -61,16 +57,10 @@ namespace BookStore.Presentation.Controllers
 
 
 
-
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateOneBookAsync([FromRoute(Name = "id")] int id, [FromBody] BookDtoForUpdate bookDto)
         {
-            if (bookDto is null) 
-                return BadRequest();
-
-            if(!ModelState.IsValid) 
-                return UnprocessableEntity(ModelState);  //StatusCode 422
-
             await _manager.BookService.UpdateOneBookAsync(id, bookDto, false);
             return NoContent();  //StatusCode 204
         }
