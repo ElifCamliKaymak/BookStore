@@ -1,6 +1,7 @@
 ﻿using BookStore.Entities.Models;
 using BookStore.Entities.RequestFeatures;
 using BookStore.Repositories.Contracts;
+using BookStore.Repositories.EFCore.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.Repositories.EFCore
@@ -23,6 +24,7 @@ namespace BookStore.Repositories.EFCore
         {
             var books = await FindAll(trackChanges)
                 .FilterBooks(bookParameters.MinPrice, bookParameters.MaxPrice)
+                .Search(bookParameters.SearchTerm)
                 .OrderBy(x => x.Id)
                 .ToListAsync();
 
