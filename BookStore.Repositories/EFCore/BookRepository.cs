@@ -2,15 +2,10 @@
 using BookStore.Entities.RequestFeatures;
 using BookStore.Repositories.Contracts;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookStore.Repositories.EFCore
 {
-    public class BookRepository : BaseRepository<Book>, IBookRepository
+    public sealed class BookRepository : BaseRepository<Book>, IBookRepository
     {
         public BookRepository(RepositoryContext context) : base(context)
         {
@@ -27,8 +22,9 @@ namespace BookStore.Repositories.EFCore
         public async Task<PagedList<Book>> GetAllBooksAsync(BookParameters bookParameters, bool trackChanges)
         {
             var books = await FindAll(trackChanges)
-            .OrderBy(x => x.Id)
-            .ToListAsync();
+                .FilterBooks(bookParameters.MinPrice, bookParameters.MaxPrice)
+                .OrderBy(x => x.Id)
+                .ToListAsync();
 
             return PagedList<Book>.ToPagedList(books, bookParameters.PageNumber, bookParameters.PageSize);
         }

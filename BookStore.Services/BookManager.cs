@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BookStore.Entities.Exceptions.BadRequestException;
 
 namespace BookStore.Services
 {
@@ -45,6 +46,10 @@ namespace BookStore.Services
 
         public async Task<(IEnumerable<BookDto> bookDto, MetaData metaData)> GetAllBooksAsync(BookParameters bookParameters, bool trackChanges)
         {
+            //bookParameters eğer valid gelmediyse hata fırlatacak.
+            if (!bookParameters.ValidPriceRange)
+                throw new PriceOutofRangeBadRequestException();
+
             var booksWithMetaData = await _manager
                 .Book
                 .GetAllBooksAsync(bookParameters, trackChanges);
