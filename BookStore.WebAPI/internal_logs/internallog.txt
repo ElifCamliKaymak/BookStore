@@ -2,3 +2,11 @@
 2023-08-12 08:54:37.1203 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
 2023-08-12 08:54:37.1400 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ELİF\OneDrive\Desktop\BookStore\BookStore.WebAPI\nlog.config
 2023-08-12 08:54:37.1540 Info Configuration initialized.
+2023-08-15 11:42:37.6812 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-08-15 11:42:37.7316 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
+2023-08-15 11:42:37.7499 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ELİF\OneDrive\Desktop\BookStore\BookStore.WebAPI\nlog.config
+2023-08-15 11:42:37.7666 Info Configuration initialized.
+2023-08-15 12:15:11.6637 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-08-15 12:15:11.7057 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
+2023-08-15 12:15:11.7255 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ELİF\OneDrive\Desktop\BookStore\BookStore.WebAPI\nlog.config
+2023-08-15 12:15:11.7376 Info Configuration initialized.

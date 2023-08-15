@@ -1,4 +1,5 @@
 ﻿using BookStore.Entities.Models;
+using BookStore.Entities.RequestFeatures;
 using BookStore.Repositories.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -23,8 +24,14 @@ namespace BookStore.Repositories.EFCore
             await FindByCondition(b => b.Id.Equals(id), trackChanges)
             .SingleOrDefaultAsync();
 
-        public async Task<IEnumerable<Book>> GetAllBooksAsync(bool trackChanges) =>
-            await FindAll(trackChanges).OrderBy(x=>x.Id).ToListAsync();
+        public async Task<PagedList<Book>> GetAllBooksAsync(BookParameters bookParameters, bool trackChanges)
+        {
+            var books = await FindAll(trackChanges)
+            .OrderBy(x => x.Id)
+            .ToListAsync();
+
+            return PagedList<Book>.ToPagedList(books, bookParameters.PageNumber, bookParameters.PageSize);
+        }
 
         public void UpdateOneBook(Book book) => Update(book);
     }
