@@ -5,11 +5,6 @@ using BookStore.Entities.Models;
 using BookStore.Entities.RequestFeatures;
 using BookStore.Repositories.Contracts;
 using BookStore.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static BookStore.Entities.Exceptions.BadRequestException;
 
 namespace BookStore.Services
@@ -38,13 +33,14 @@ namespace BookStore.Services
 
         public async Task DeleteOneBookAsync(int id, bool trackChanges)
         {
-            var entity = await GetOneBookAndCheckExist(id, trackChanges);
+            var entity = await GetOneBookAndCheckExists(id, trackChanges);
 
             _manager.Book.DeleteOneBook(entity);
             await _manager.SaveAsync();
         }
 
-        public async Task<(IEnumerable<BookDto> bookDto, MetaData metaData)> GetAllBooksAsync(BookParameters bookParameters, bool trackChanges)
+        public async Task<(IEnumerable<BookDto> bookDto, MetaData metaData)> 
+            GetAllBooksAsync(BookParameters bookParameters, bool trackChanges)
         {
             //bookParameters eğer valid gelmediyse hata fırlatacak.
             if (!bookParameters.ValidPriceRange)
@@ -61,13 +57,13 @@ namespace BookStore.Services
 
         public async Task<BookDto> GetOneBookByIdAsync(int id, bool trackChanges)
         {
-            var entity = await GetOneBookAndCheckExist(id, trackChanges);
+            var entity = await GetOneBookAndCheckExists(id, trackChanges);
             return _mapper.Map<BookDto>(entity);
         }
 
         public async Task<(BookDtoForUpdate bookDtoForUpdate, Book book)> GetOneBookForPatchAsync(int id, bool trackChanges)
         {
-            var entity = await GetOneBookAndCheckExist(id, trackChanges);
+            var entity = await GetOneBookAndCheckExists(id, trackChanges);
             var bookDtoForUpdate = _mapper.Map<BookDtoForUpdate>(entity);
             return (bookDtoForUpdate, entity);
         }
@@ -80,9 +76,11 @@ namespace BookStore.Services
 
 
 
-        public async Task UpdateOneBookAsync(int id, BookDtoForUpdate bookDto, bool trackChanges)
+        public async Task UpdateOneBookAsync(int id, 
+            BookDtoForUpdate bookDto, 
+            bool trackChanges)
         {
-            var entity = await GetOneBookAndCheckExist(id, trackChanges);
+            var entity = await GetOneBookAndCheckExists(id, trackChanges);
 
 
             if (bookDto is null)
@@ -98,9 +96,10 @@ namespace BookStore.Services
         }
 
 
-        private async Task<Book> GetOneBookAndCheckExist(int id, bool trackChanges)
+        private async Task<Book> GetOneBookAndCheckExists(int id, bool trackChanges)
         {
             var entity = await _manager.Book.GetOneBookByIdAsync(id, trackChanges);
+
             if (entity is null)
                 throw new BookNotFoundException(id);
 

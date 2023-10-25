@@ -1,17 +1,10 @@
 ﻿using BookStore.Entities.DataTransferObjects;
-using BookStore.Entities.Exceptions;
-using BookStore.Entities.Models;
 using BookStore.Entities.RequestFeatures;
 using BookStore.Presentation.ActionFilter;
 using BookStore.Services.Contracts;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace BookStore.Presentation.Controllers
 {
@@ -87,7 +80,8 @@ namespace BookStore.Presentation.Controllers
 
 
         [HttpPatch("(id:int)")]
-        public async Task<IActionResult> PartiallyUpdateOneBookAsync([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<BookDtoForUpdate> bookPatch)
+        public async Task<IActionResult> PartiallyUpdateOneBookAsync([FromRoute(Name = "id")] int id, 
+            [FromBody] JsonPatchDocument<BookDtoForUpdate> bookPatch)
         {
             if(bookPatch is null) 
                 return BadRequest();
