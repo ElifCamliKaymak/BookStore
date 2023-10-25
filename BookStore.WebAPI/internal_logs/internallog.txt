@@ -10,3 +10,31 @@
 2023-08-15 12:15:11.7057 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
 2023-08-15 12:15:11.7255 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ELİF\OneDrive\Desktop\BookStore\BookStore.WebAPI\nlog.config
 2023-08-15 12:15:11.7376 Info Configuration initialized.
+2023-10-12 10:17:49.7544 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-12 10:17:49.7796 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
+2023-10-12 10:17:49.7948 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\camli\Source\Repos\BookStore\BookStore.WebAPI\nlog.config
+2023-10-12 10:17:49.8076 Info Configuration initialized.
+2023-10-12 10:22:18.2359 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-12 10:22:18.2359 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
+2023-10-12 10:22:18.2572 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\camli\Source\Repos\BookStore\BookStore.WebAPI\nlog.config
+2023-10-12 10:22:18.2572 Info Configuration initialized.
+2023-10-12 10:22:19.3194 Info AppDomain Shutting down. LogFactory closing...
+2023-10-12 10:22:19.3194 Info LogFactory has been closed.
+2023-10-12 10:22:26.9429 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-12 10:22:26.9429 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
+2023-10-12 10:22:26.9610 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\camli\Source\Repos\BookStore\BookStore.WebAPI\nlog.config
+2023-10-12 10:22:26.9610 Info Configuration initialized.
+2023-10-12 10:22:29.6689 Info AppDomain Shutting down. LogFactory closing...
+2023-10-12 10:22:29.6765 Info LogFactory has been closed.
+2023-10-12 10:22:53.0711 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-12 10:22:53.2717 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
+2023-10-12 10:22:53.3145 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\camli\Source\Repos\BookStore\BookStore.WebAPI\nlog.config
+2023-10-12 10:22:53.3496 Info Configuration initialized.
+2023-10-12 11:02:27.4189 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-12 11:02:27.4505 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
+2023-10-12 11:02:27.4661 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\camli\Source\Repos\BookStore\BookStore.WebAPI\nlog.config
+2023-10-12 11:02:27.4788 Info Configuration initialized.
+2023-10-12 11:42:29.7915 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-12 11:42:29.8871 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
+2023-10-12 11:42:29.9115 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\camli\source\repos\BookStore\BookStore.WebAPI\nlog.config
+2023-10-12 11:42:29.9292 Info Configuration initialized.

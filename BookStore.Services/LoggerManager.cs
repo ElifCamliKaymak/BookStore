@@ -1,5 +1,4 @@
 ﻿using BookStore.Services.Contracts;
-using Microsoft.Extensions.Logging;
 using NLog;
 using ILogger = NLog.ILogger;
 

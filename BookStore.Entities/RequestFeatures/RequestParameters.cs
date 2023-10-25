@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BookStore.Entities.RequestFeatures
+﻿namespace BookStore.Entities.RequestFeatures
 {
     public abstract class RequestParameters
     {
@@ -20,5 +14,6 @@ namespace BookStore.Entities.RequestFeatures
 			set { _pageSize = value > maxPageSize ? maxPageSize : value; }
 		}
 
-	}
+        public string? OrderBy { get; set; }
+    }
 }
