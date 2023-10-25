@@ -1,4 +1,5 @@
-﻿using BookStore.Presentation.ActionFilter;
+﻿using BookStore.Entities.DataTransferObjects;
+using BookStore.Presentation.ActionFilter;
 using BookStore.Repositories.Contracts;
 using BookStore.Repositories.EFCore;
 using BookStore.Services;
@@ -42,6 +43,11 @@ namespace BookStore.WebAPI.Extensions
                     .WithExposedHeaders("X-Pagination")
                 );
             });
+        }
+
+        public static void ConfigureDataShaper (this IServiceCollection services)
+        {
+            services.AddScoped<IDataShaper<BookDto>, DataShaper<BookDto>>();
         }
     }
 }
