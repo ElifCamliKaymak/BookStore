@@ -5,6 +5,7 @@ using BookStore.Entities.Models;
 using BookStore.Entities.RequestFeatures;
 using BookStore.Repositories.Contracts;
 using BookStore.Services.Contracts;
+using System.Dynamic;
 using static BookStore.Entities.Exceptions.BadRequestException;
 
 namespace BookStore.Services
@@ -14,12 +15,14 @@ namespace BookStore.Services
         private readonly IRepositoryManager _manager;
         private readonly ILoggerService _logger;
         private readonly IMapper _mapper;
+        private readonly IDataShaper<BookDto> _shaper;
 
-        public BookManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper)
+        public BookManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper, IDataShaper<BookDto> shaper)
         {
             _manager = manager;
             _logger = logger;
             _mapper = mapper;
+            _shaper = shaper;
         }
 
         public async Task<BookDto> CreateOneBookAsync(BookDtoForInsertion bookDto)
@@ -39,7 +42,7 @@ namespace BookStore.Services
             await _manager.SaveAsync();
         }
 
-        public async Task<(IEnumerable<BookDto> bookDto, MetaData metaData)> 
+        public async Task<(IEnumerable<ExpandoObject> bookDto, MetaData metaData)>
             GetAllBooksAsync(BookParameters bookParameters, bool trackChanges)
         {
             //bookParameters eğer valid gelmediyse hata fırlatacak.
@@ -50,9 +53,11 @@ namespace BookStore.Services
                 .Book
                 .GetAllBooksAsync(bookParameters, trackChanges);
 
-             var booksDto = _mapper.Map<IEnumerable<BookDto>>(booksWithMetaData);
+            var booksDto = _mapper.Map<IEnumerable<BookDto>>(booksWithMetaData);
 
-            return (booksDto, booksWithMetaData.MetaData);
+            var shapedData = _shaper.ShapeData(booksDto, bookParameters.Fields);
+
+            return (books: shapedData, metaData: booksWithMetaData.MetaData);
         }
 
         public async Task<BookDto> GetOneBookByIdAsync(int id, bool trackChanges)
@@ -76,8 +81,8 @@ namespace BookStore.Services
 
 
 
-        public async Task UpdateOneBookAsync(int id, 
-            BookDtoForUpdate bookDto, 
+        public async Task UpdateOneBookAsync(int id,
+            BookDtoForUpdate bookDto,
             bool trackChanges)
         {
             var entity = await GetOneBookAndCheckExists(id, trackChanges);
